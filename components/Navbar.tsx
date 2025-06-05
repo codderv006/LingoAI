@@ -7,8 +7,8 @@ import { Menu, X } from 'lucide-react';
 
 // Import badge assets (adjust the path/filename as needed)
 import Image from 'next/image';
-import boltBadgeWhite from '@/assets/bolt-badge-white.svg';
-import boltBadgeBlack from '@/assets/bolt-badge-black.svg';
+import boltBadgeWhite from '@/assets/white_circle_360x360.png';
+import boltBadgeBlack from '@/assets/black_circle_360x360.png';
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
