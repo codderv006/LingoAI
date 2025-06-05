@@ -73,13 +73,12 @@ export function Navbar() {
             >
               How It Works
             </Link>
-            {/* <Link
-              href="/pricing"
-              className="text-sm font-medium transition-colors hover:text-primary"
+            <span
+              className="text-sm font-medium transition-colors hover:text-primary cursor-pointer"
               onClick={() => setIsMenuOpen(false)}
             >
               Pricing
-            </Link> */}
+            </span>
             <Link href="/languages" onClick={() => setIsMenuOpen(false)}>
               <Button className="w-full">Get Started</Button>
             </Link>
