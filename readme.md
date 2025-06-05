@@ -20,7 +20,7 @@ A modern AI-powered language learning web app that lets you speak, chat, and lea
 
 ```bash
 git clone https://github.com/codderv006/LingoAI.git
-cd project-bolt
+cd LingoAI
 ```
 
 ### 2. Install Dependencies
