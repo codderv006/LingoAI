@@ -160,10 +160,10 @@ export function ConversationInterface({ language }: ConversationInterfaceProps) 
   };
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex justify-between items-center mb-2">
-        <h2 className="text-xl font-bold">Practice {language.name}</h2>
-        <div className="flex items-center gap-2">
+    <div className="flex flex-col gap-4 w-full">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-2 gap-2">
+        <h2 className="text-lg md:text-xl font-bold">Practice {language.name}</h2>
+        <div className="flex flex-wrap items-center gap-2">
           <Label htmlFor="voice-mode" className="text-sm">Voice Mode</Label>
           <Switch
             id="voice-mode"
@@ -171,7 +171,6 @@ export function ConversationInterface({ language }: ConversationInterfaceProps) 
             onCheckedChange={(checked) => setIsVoiceMode(checked)}
             disabled={isStopped}
           />
-          {/* Stop Conversation Button */}
           <Button
             size="sm"
             variant="destructive"
@@ -181,7 +180,6 @@ export function ConversationInterface({ language }: ConversationInterfaceProps) 
           >
             Stop Conversation
           </Button>
-          {/* Continue Conversation Button */}
           {isStopped && (
             <Button
               size="sm"
@@ -192,7 +190,6 @@ export function ConversationInterface({ language }: ConversationInterfaceProps) 
               Continue Conversation
             </Button>
           )}
-          {/* Start New Conversation Button */}
           <Button
             size="sm"
             variant="outline"
@@ -204,20 +201,20 @@ export function ConversationInterface({ language }: ConversationInterfaceProps) 
         </div>
       </div>
       
-      <Card className="border bg-card">
-        <CardContent className="p-6">
-          <div className="flex flex-col gap-4 h-[500px]">
-            <div className="flex-1 overflow-y-auto space-y-4 p-2">
+      <Card className="border bg-card w-full">
+        <CardContent className="p-2 sm:p-4 md:p-6">
+          <div className="flex flex-col gap-4 h-[60vh] sm:h-[400px] md:h-[500px]">
+            <div className="flex-1 overflow-y-auto space-y-4 p-1 sm:p-2">
               {messages.map((message) => (
                 <div
                   key={message.id}
                   className={cn(
-                    "flex gap-3 max-w-[80%]",
+                    "flex gap-2 sm:gap-3 max-w-[95%] sm:max-w-[80%]",
                     message.role === 'user' ? "ml-auto" : ""
                   )}
                 >
                   {message.role === 'assistant' && (
-                    <Avatar className="h-8 w-8">
+                    <Avatar className="h-7 w-7 sm:h-8 sm:w-8">
                       <AvatarFallback style={{ backgroundColor: language.color }}>
                         {language.icon}
                       </AvatarFallback>
@@ -225,12 +222,12 @@ export function ConversationInterface({ language }: ConversationInterfaceProps) 
                   )}
                   
                   <div className={cn(
-                    "rounded-lg p-3",
+                    "rounded-lg p-2 sm:p-3",
                     message.role === 'user' 
                       ? "bg-primary text-primary-foreground" 
                       : "bg-muted"
                   )}>
-                    <p>{message.content}</p>
+                    <p className="text-sm sm:text-base">{message.content}</p>
                     {message.role === 'assistant' && (
                       <div className="mt-2 flex items-center gap-2">
                         <Button size="icon" variant="ghost" className="h-6 w-6">
@@ -241,7 +238,7 @@ export function ConversationInterface({ language }: ConversationInterfaceProps) 
                   </div>
                   
                   {message.role === 'user' && (
-                    <Avatar className="h-8 w-8">
+                    <Avatar className="h-7 w-7 sm:h-8 sm:w-8">
                       <AvatarFallback>U</AvatarFallback>
                     </Avatar>
                   )}
@@ -249,41 +246,41 @@ export function ConversationInterface({ language }: ConversationInterfaceProps) 
               ))}
               
               {conversation.isSpeaking && !isStopped && (
-                <div className="flex gap-3 max-w-[80%]">
-                  <Avatar className="h-8 w-8">
+                <div className="flex gap-2 sm:gap-3 max-w-[95%] sm:max-w-[80%]">
+                  <Avatar className="h-7 w-7 sm:h-8 sm:w-8">
                     <AvatarFallback style={{ backgroundColor: language.color }}>
                       {language.icon}
                     </AvatarFallback>
                   </Avatar>
-                  <div className="rounded-lg p-3 bg-muted flex items-center gap-2">
-                    <span className="text-muted-foreground">Thinking</span>
+                  <div className="rounded-lg p-2 sm:p-3 bg-muted flex items-center gap-2">
+                    <span className="text-muted-foreground text-sm">Thinking</span>
                     <Loader2 className="h-4 w-4 animate-spin" />
                   </div>
                 </div>
               )}
             </div>
             
-            <div className="border-t pt-4">
+            <div className="border-t pt-3">
               {isVoiceMode && !isStopped ? (
                 <div className="flex flex-col items-center gap-2">
-                  <div className="relative w-16 h-16">
+                  <div className="relative w-14 h-14 sm:w-16 sm:h-16">
                     <Button
                       size="icon"
                       className={cn(
-                        "w-16 h-16 rounded-full transition-all",
+                        "w-14 h-14 sm:w-16 sm:h-16 rounded-full transition-all",
                         !conversation.isSpeaking ? "bg-primary hover:bg-primary/90" : "bg-destructive hover:bg-destructive/90"
                       )}
                       onClick={switchToTextMode}
                       disabled={isStopped}
                       title="Switch to text mode"
                     >
-                      <Mic className="h-8 w-8" />
+                      <Mic className="h-7 w-7 sm:h-8 sm:w-8" />
                     </Button>
                     {!conversation.isSpeaking && (
                       <div className="absolute inset-0 rounded-full border-4 border-primary/30 animate-ping"></div>
                     )}
                   </div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-xs sm:text-sm text-muted-foreground text-center">
                     I'm listening... (Click mic to switch to text)
                   </p>
                 </div>
@@ -293,7 +290,7 @@ export function ConversationInterface({ language }: ConversationInterfaceProps) 
                     value={inputText}
                     onChange={(e) => setInputText(e.target.value)}
                     placeholder={`Type your message in ${language.name} or English...`}
-                    className="min-h-[60px]"
+                    className="min-h-[40px] sm:min-h-[60px]"
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' && !e.shiftKey) {
                         e.preventDefault();

@@ -11,13 +11,14 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
           <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
             LingoAI
           </span>
         </Link>
         
+        {/* Desktop navigation */}
         <nav className="hidden md:flex items-center gap-6">
           <Link href="/#features" className="text-sm font-medium transition-colors hover:text-primary">
             Features
@@ -33,15 +34,17 @@ export function Navbar() {
           </Link>
         </nav>
         
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <ModeToggle />
           <Link href="/languages" className="hidden md:block">
             <Button>Get Started</Button>
           </Link>
           
+          {/* Hamburger menu for mobile */}
           <button
-            className="block md:hidden"
+            className="block md:hidden p-2 rounded focus:outline-none focus:ring-2 focus:ring-primary/50"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -50,8 +53,8 @@ export function Navbar() {
       
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden border-b">
-          <div className="container py-4 flex flex-col space-y-4">
+        <div className="md:hidden border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+          <div className="container py-4 flex flex-col space-y-4 px-4 sm:px-6">
             <Link
               href="/#features"
               className="text-sm font-medium transition-colors hover:text-primary"

@@ -44,11 +44,11 @@ export function LearningSteps({ language }: LearningStepsProps) {
   };
   
   return (
-    <div>
+    <div className="w-full max-w-3xl mx-auto px-2 sm:px-4 md:px-0">
       <div className="mb-8">
         <Card>
           <CardHeader>
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
               <div>
                 <CardTitle>Curriculum Overview</CardTitle>
                 <p className="text-muted-foreground mt-1">
@@ -59,18 +59,18 @@ export function LearningSteps({ language }: LearningStepsProps) {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="flex items-center gap-4 mb-6">
-              <div className="flex-1">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mb-6">
+              <div className="flex-1 w-full">
                 <div className="flex justify-between mb-1 text-sm">
                   <span>Progress</span>
                   <span className="font-medium">25%</span>
                 </div>
                 <Progress value={25} className="h-2" />
               </div>
-              <Button>Continue</Button>
+              <Button className="w-full md:w-auto">Continue</Button>
             </div>
             
-            <div className="grid grid-cols-4 gap-4 mb-6">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
               <div className="border rounded-lg p-3 text-center">
                 <div className="text-2xl font-bold">10</div>
                 <p className="text-xs text-muted-foreground">Chapters</p>
@@ -109,8 +109,8 @@ export function LearningSteps({ language }: LearningStepsProps) {
       </div>
       
       <div className="mb-4">
-        <h2 className="text-xl font-bold mb-2">10-Step Learning Journey</h2>
-        <p className="text-muted-foreground mb-4">
+        <h2 className="text-xl sm:text-2xl font-bold mb-2">10-Step Learning Journey</h2>
+        <p className="text-muted-foreground mb-4 text-sm sm:text-base">
           Our structured approach ensures comprehensive language acquisition through these key stages
         </p>
       </div>
@@ -133,8 +133,8 @@ export function LearningSteps({ language }: LearningStepsProps) {
                     : "border-l-gray-200 dark:border-l-gray-800"
               }`}
             >
-              <CardContent className="p-6">
-                <div className="flex items-center gap-4">
+              <CardContent className="p-4 sm:p-6">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                   <div className={`h-12 w-12 rounded-full flex items-center justify-center ${
                     isCompleted 
                       ? "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400" 
@@ -146,7 +146,7 @@ export function LearningSteps({ language }: LearningStepsProps) {
                   </div>
                   
                   <div className="flex-1">
-                    <div className="flex items-center justify-between mb-1">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-1 gap-2">
                       <h3 className="font-semibold text-lg">
                         {step.title}
                         {isCompleted && (
@@ -164,18 +164,18 @@ export function LearningSteps({ language }: LearningStepsProps) {
                         Step {step.id} of 10
                       </div>
                     </div>
-                    <p className="text-muted-foreground">{step.description}</p>
+                    <p className="text-muted-foreground text-sm sm:text-base">{step.description}</p>
                     
                     {(isCompleted || isCurrent) && (
-                      <div className="mt-4 flex gap-2">
+                      <div className="mt-4 flex flex-col sm:flex-row gap-2">
                         {isCompleted && (
-                          <Button variant="outline" size="sm">
+                          <Button variant="outline" size="sm" className="w-full sm:w-auto">
                             Review
                           </Button>
                         )}
                         {isCurrent && (
                           <Link href={`/conversation/${language.code}`}>
-                            <Button size="sm">
+                            <Button size="sm" className="w-full sm:w-auto">
                               Continue
                             </Button>
                           </Link>

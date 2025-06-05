@@ -61,8 +61,9 @@ export function ProgressTracker({ language }: ProgressTrackerProps) {
   ];
   
   return (
-    <div>
+    <div className="w-full max-w-6xl mx-auto px-2 sm:px-4 md:px-6">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        {/* Stat Cards */}
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium">
@@ -154,13 +155,14 @@ export function ProgressTracker({ language }: ProgressTrackerProps) {
       </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-8">
+        {/* Activity History Chart */}
         <Card className="lg:col-span-2">
           <CardHeader>
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
               <CardTitle>Activity History</CardTitle>
               <Tabs 
                 defaultValue="week" 
-                className="w-[260px]"
+                className="w-full sm:w-[260px]"
                 value={period}
                 onValueChange={setPeriod}
               >
@@ -176,7 +178,7 @@ export function ProgressTracker({ language }: ProgressTrackerProps) {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-[240px]">
+            <div className="h-[200px] sm:h-[240px]">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={activityData}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} />
@@ -190,6 +192,7 @@ export function ProgressTracker({ language }: ProgressTrackerProps) {
           </CardContent>
         </Card>
         
+        {/* Skills Breakdown Pie Chart */}
         <Card>
           <CardHeader>
             <CardTitle>Skills Breakdown</CardTitle>
@@ -198,7 +201,7 @@ export function ProgressTracker({ language }: ProgressTrackerProps) {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-[240px]">
+            <div className="h-[200px] sm:h-[240px]">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
@@ -233,6 +236,7 @@ export function ProgressTracker({ language }: ProgressTrackerProps) {
         </Card>
       </div>
       
+      {/* Achievements */}
       <Card>
         <CardHeader>
           <CardTitle>Recent Achievements</CardTitle>
@@ -241,7 +245,7 @@ export function ProgressTracker({ language }: ProgressTrackerProps) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
               { title: "First Conversation", date: "2 days ago", icon: "🗣️" },
               { title: "5-Day Streak", date: "Today", icon: "🔥" },

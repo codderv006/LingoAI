@@ -25,7 +25,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="min-h-screen w-full bg-background">
+            {/* Responsive container for all content */}
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              {children}
+            </div>
+          </div>
           <Toaster />
         </ThemeProvider>
       </body>
