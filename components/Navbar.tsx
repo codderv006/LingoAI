@@ -22,8 +22,7 @@ export function Navbar() {
       <div className="container flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8 relative">
         <Link href="/" className="flex items-center gap-3">
           <span
-            className="leading-none text-3xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent tracking-tight pt-1"
-            // Added leading-none and pt-1 to prevent text cutoff
+            className="leading-tight text-3xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent tracking-tight pt-2 pb-1"
           >
             LingoAI
           </span>
