@@ -73,13 +73,13 @@ export function Navbar() {
             >
               How It Works
             </Link>
-            <Link
+            {/* <Link
               href="/pricing"
               className="text-sm font-medium transition-colors hover:text-primary"
               onClick={() => setIsMenuOpen(false)}
             >
               Pricing
-            </Link>
+            </Link> */}
             <Link href="/languages" onClick={() => setIsMenuOpen(false)}>
               <Button className="w-full">Get Started</Button>
             </Link>
